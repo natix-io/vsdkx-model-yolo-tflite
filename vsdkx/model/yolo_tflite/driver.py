@@ -84,7 +84,7 @@ class YoloTfliteDriver(ModelDriver):
         result_scores = []
         result_classes = []
 
-        if len(self._filter_classes > 0):
+        if len(self._filter_classes) > 0:
             # Go through the prediction results
             for box, score, c_id in zip(boxes, scores, classes):
                 # Iterate over the predicted bounding boxes and filter
