@@ -239,7 +239,7 @@ class YoloTfliteDriver(ModelDriver):
 
         return np.asarray(output)
 
-    def _decode_box(box):
+    def _decode_box(self, box):
         """
         Decoding boxes from [box, y, w, h] to [x1, y1, x2, y2]
         where xy1=top-left, xy2=bottom-right
