@@ -43,10 +43,6 @@ class YoloTfliteDriver(ModelDriver):
             load_tflite(model_config['model_path'])
         self._conf_thresh = model_settings['conf_thresh']
         self._iou_thresh = model_settings['iou_thresh']
-        self._text_thickness = drawing_config['text_thickness']
-        self._text_fontscale = drawing_config['text_fontscale']
-        self._text_color = drawing_config['text_color']
-        self._rectangle_color = drawing_config['rectangle_color']
 
     def inference(self, image: np.ndarray) -> Inference:
         """
