@@ -2,7 +2,7 @@ from setuptools import setup, find_namespace_packages
 
 setup(
     name='vsdkx-model-yolo-tflite',
-    url='https://gitlab.com/natix/visiondeploy/aiconnector',
+    url='https://gitlab.com/natix/cvison/vsdkx/vsdkx-model-yolo-tflite',
     author='Helmut',
     author_email='helmut@natix.io',
     namespace_packages=['vsdkx', 'vsdkx.model'],

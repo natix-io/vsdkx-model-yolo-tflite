@@ -41,7 +41,6 @@ class YoloTfliteDriver(ModelDriver):
         self._filter_classes = model_config.get('filter_class_ids', [])
         self._interpreter, self._input_details, self._output_details = \
             load_tflite(model_config['model_path'])
-        self._target_shape = model_settings['target_shape']
         self._conf_thresh = model_settings['conf_thresh']
         self._iou_thresh = model_settings['iou_thresh']
         self._text_thickness = drawing_config['text_thickness']
@@ -49,7 +48,7 @@ class YoloTfliteDriver(ModelDriver):
         self._text_color = drawing_config['text_color']
         self._rectangle_color = drawing_config['rectangle_color']
 
-    def inference(self, image) -> Inference:
+    def inference(self, image: np.ndarray) -> Inference:
         """
         People detection with ssd mobilenet coco
 
@@ -78,7 +77,7 @@ class YoloTfliteDriver(ModelDriver):
             y = np.squeeze(y, axis=0)
             boxes, scores, classes = y[:, :4], y[:, 4:5], y[:, 5:6]
             boxes = self._scale_boxes(boxes, self._input_shape,
-                                      self._target_shape)
+                                      image.shape)
 
         result_boxes = []
         result_scores = []
