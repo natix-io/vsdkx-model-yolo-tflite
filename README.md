@@ -7,8 +7,6 @@
  
 #### Model Config
 
-Below we show the default system config settings: 
-
 ```yaml
 'model_path': 'weight.tflite'
 'input_shape':
