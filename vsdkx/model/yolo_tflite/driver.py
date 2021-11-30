@@ -5,7 +5,7 @@ import tensorflow as tf
 import numpy as np
 
 from vsdkx.core.interfaces import ModelDriver
-from vsdkx.core.structs import Inference
+from vsdkx.core.structs import Inference, FrameObject
 from vsdkx.core.util.model import load_tflite
 
 
@@ -44,18 +44,19 @@ class YoloTfliteDriver(ModelDriver):
         self._conf_thresh = model_settings['conf_thresh']
         self._iou_thresh = model_settings['iou_thresh']
 
-    def inference(self, image: np.ndarray) -> Inference:
+    def inference(self, frame_object: FrameObject) -> Inference:
         """
         People detection with ssd mobilenet coco
 
         Args:
-            image (np.array): 3D image array
+            frame_object (FrameObject): Frame Object
 
         Returns:
             (Inference): the result of the ai
         """
 
         # Resize the original image for inference
+        image = frame_object.frame
         resized_image = self._resize_img(image, self._input_shape)
 
         inf_start = time.perf_counter()
