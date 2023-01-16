@@ -1,3 +1,9 @@
+# Yolov5 Tflite
+
+This repository provides support for inference with tflite weights for yolov5.
+
+**Important**: This is an experimental repository and it is not attached or included to any of our production ready repositories.
+
 ### Model Settings
 
 ```yaml
